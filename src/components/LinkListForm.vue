@@ -5,8 +5,7 @@ export default {
   data() {
     return {
       link: '',
-      noLinkError: false,
-      incorrectLinkError: false
+      noLinkError: false
     }
   },
   methods: {
@@ -21,7 +20,6 @@ export default {
         )
 
         if (response.ok) {
-          this.incorrectLinkError = false
           const data = await response.json()
 
           const newLink = {
@@ -31,8 +29,6 @@ export default {
           }
 
           this.$emit('addLink', newLink)
-        } else {
-          this.incorrectLinkError = true
         }
 
         this.noLinkError = false
@@ -46,8 +42,6 @@ export default {
     errorMessage() {
       if (this.noLinkError) {
         return 'Please add a link'
-      } else if (this.incorrectLinkError) {
-        return 'Incorrect link'
       }
 
       return null
