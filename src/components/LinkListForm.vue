@@ -1,6 +1,4 @@
 <script>
-let id = 0
-
 export default {
   data() {
     return {
@@ -23,7 +21,6 @@ export default {
           const data = await response.json()
 
           const newLink = {
-            id: id++,
             url: this.link,
             shortenedUrl: data.link_url
           }

@@ -2,6 +2,8 @@
 import LinkListForm from './LinkListForm.vue'
 import LinkListItem from './LinkListItem.vue'
 
+let id = 0
+
 export default {
   components: {
     LinkListForm,
@@ -9,12 +11,23 @@ export default {
   },
   data() {
     return {
-      links: [],
+      links: []
     }
   },
   methods: {
     addLink(newLink) {
+      newLink.id = id++
       this.links.push(newLink)
+
+      sessionStorage.setItem('saved_links', JSON.stringify(this.links))
+    }
+  },
+  created() {
+    const savedLinks = JSON.parse(sessionStorage.getItem('saved_links'))
+
+    if (savedLinks) {
+      this.links = savedLinks
+      id = this.links.length
     }
   }
 }
@@ -22,9 +35,7 @@ export default {
 
 <template>
   <div>
-    <LinkListForm
-      @addLink="(newLink) => addLink(newLink)"
-    />
+    <LinkListForm @addLink="(newLink) => addLink(newLink)" />
 
     <div class="mt-6 flex flex-col gap-6 md:gap-4">
       <LinkListItem
