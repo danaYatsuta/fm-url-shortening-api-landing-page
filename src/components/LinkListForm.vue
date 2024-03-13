@@ -8,20 +8,21 @@ export default {
   },
   methods: {
     async onSubmit() {
-      if (this.link !== '') {
+      const trimmedLink = this.link.trim()
+
+      if (trimmedLink !== '') {
         const response = await fetch(
           'https://url.api.stdlib.com/temporary@0.3.0/create/?' +
             new URLSearchParams({
-              url: this.link
-            }),
-          {}
+              url: trimmedLink
+            })
         )
 
         if (response.ok) {
           const data = await response.json()
 
           const newLink = {
-            url: this.link,
+            url: trimmedLink,
             shortenedUrl: data.link_url
           }
 
