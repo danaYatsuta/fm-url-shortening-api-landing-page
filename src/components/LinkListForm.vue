@@ -13,7 +13,11 @@ export default {
     async onSubmit() {
       if (this.link !== '') {
         const response = await fetch(
-          'https://api.shrtco.de/v2/shorten?' + new URLSearchParams({ url: this.link })
+          'https://url.api.stdlib.com/temporary@0.3.0/create/?' +
+            new URLSearchParams({
+              url: this.link
+            }),
+          {}
         )
 
         if (response.ok) {
@@ -23,7 +27,7 @@ export default {
           const newLink = {
             id: id++,
             url: this.link,
-            shortenedUrl: data['result']['short_link']
+            shortenedUrl: data.link_url
           }
 
           this.$emit('addLink', newLink)
