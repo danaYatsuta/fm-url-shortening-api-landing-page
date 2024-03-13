@@ -11,6 +11,8 @@ export default {
       const trimmedLink = this.link.trim()
 
       if (trimmedLink !== '') {
+        this.noLinkError = false
+
         const response = await fetch(
           'https://url.api.stdlib.com/temporary@0.3.0/create/?' +
             new URLSearchParams({
@@ -29,7 +31,6 @@ export default {
           this.$emit('addLink', newLink)
         }
 
-        this.noLinkError = false
         this.link = ''
       } else {
         this.noLinkError = true
