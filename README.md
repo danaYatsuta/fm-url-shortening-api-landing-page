@@ -35,7 +35,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Solution page on Frontend Mentor](https://your-solution-url.com)
-- Live Site URL: [GitHub Pages](https://danayatsuta.github.io/frontend-mentor-url-shortening-api/)
+- Live Site URL: [GitHub Pages](https://danayatsuta.github.io/fm-url-shortening-api-landing-page/)
 
 ## My process
 
